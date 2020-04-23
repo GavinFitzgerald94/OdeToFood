@@ -14,7 +14,7 @@ COPY OdeToFood/. ./OdeToFood/
 COPY OdeToFood.Core/. ./OdeToFood.Core/
 COPY OdeToFood.Data/. ./OdeToFood.Data/
 #WORKDIR /source/aspnetapp
-RUN dotnet publish -c release -o /app -r linux-arm --no-restore
+RUN dotnet publish -c release -o /app  --no-restore
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
