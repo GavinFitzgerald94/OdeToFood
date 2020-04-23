@@ -1,6 +1,6 @@
 # https://hub.docker.com/_/microsoft-dotnet-core
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
-WORKDIR /Users/gavin/C#_Training/OdeToFood
+WORKDIR /home/pi/dotnet/OdeToFood
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
@@ -13,8 +13,7 @@ RUN dotnet restore
 COPY OdeToFood/. ./OdeToFood/
 COPY OdeToFood.Core/. ./OdeToFood.Core/
 COPY OdeToFood.Data/. ./OdeToFood.Data/
-#WORKDIR /source/aspnetapp
-RUN dotnet publish -c release -o /app -r linux-arm --no-restore
+RUN dotnet publish -c release -o /app --no-restore
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
